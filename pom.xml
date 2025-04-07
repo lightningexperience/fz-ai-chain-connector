@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mycompany</groupId>
@@ -14,6 +16,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
+        <mule.runtime.version>4.6.14</mule.runtime.version> <!-- fz: explicitly set Mule runtime version -->
+        <maven.compiler.source>11</maven.compiler.source>   <!-- fz: ensure Java version is set -->
+        <maven.compiler.target>11</maven.compiler.target>   <!-- fz: match Java version -->
     </properties>
 
     <build>
@@ -29,12 +34,14 @@
                 <version>${mule.maven.plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
+                    <runtimeVersion>${mule.runtime.version}</runtimeVersion> <!-- fz: added runtime version -->
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
     <repositories>
-            <repository>
+        <repository>
             <id>anypoint-exchange-v2</id>
             <name>Anypoint Exchange</name>
             <url>https://maven.anypoint.mulesoft.com/api/v2/maven</url>
@@ -47,6 +54,7 @@
             <layout>default</layout>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <pluginRepository>
             <id>mulesoft-releases</id>
@@ -58,12 +66,21 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
     <dependencies>
         <dependency>
             <groupId>com.mulesoft.connectors</groupId>
             <artifactId>mule4-aichain-connector</artifactId>
             <version>1.2.0</version>
             <classifier>mule-plugin</classifier>
-         </dependency>
+        </dependency>
+        <dependency>
+            <groupId>com.mulesoft.connectors</groupId>
+            <artifactId>mule4-aichain-connector</artifactId>
+            <version>1.2.0</version>
+            <classifier>mule-plugin</classifier>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/mule4-aichain-connector-1.2.0-mule-plugin.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>
