@@ -67,20 +67,24 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.mulesoft.connectors</groupId>
-            <artifactId>mule4-aichain-connector</artifactId>
-            <version>1.2.0</version>
-            <classifier>mule-plugin</classifier>
-        </dependency>
-        <dependency>
-            <groupId>com.mulesoft.connectors</groupId>
-            <artifactId>mule4-aichain-connector</artifactId>
-            <version>1.2.0</version>
-            <classifier>mule-plugin</classifier>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/mule4-aichain-connector-1.2.0-mule-plugin.jar</systemPath>
-        </dependency>
-    </dependencies>
+ <dependencies>
+    <!-- Exchange-compatible dummy for IDE -->
+    <dependency>
+        <groupId>com.mulesoft.connectors</groupId>
+        <artifactId>mule4-aichain-connector</artifactId>
+        <version>1.0.0</version>
+        <classifier>mule-plugin</classifier>
+    </dependency>
+
+    <!-- Actual local JAR -->
+    <dependency>
+        <groupId>com.mulesoft.connectors</groupId>
+        <artifactId>mule4-aichain-connector</artifactId>
+        <version>1.2.0</version>
+        <classifier>mule-plugin</classifier>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/mule4-aichain-connector-1.2.0-mule-plugin.jar</systemPath>
+    </dependency>
+</dependencies>
+
 </project>
